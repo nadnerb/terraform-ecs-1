@@ -22,6 +22,10 @@ variable "ecs_cluster_name" {
   default = "default"
 }
 
+variable "zone_name" {
+  description = "The rout53 internal zone name"
+}
+
 /* ECS optimized AMIs per region */
 variable "amis" {
   default = {
