@@ -43,8 +43,6 @@ variable "vpc_id" {
 }
 
 variable "subnet_ids" {
-  /* FIXME */
-  default = "subnet-dab1c7ad,subnet-08024a6d"
 }
 
 variable "key_name" {

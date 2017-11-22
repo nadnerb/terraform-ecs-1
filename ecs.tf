@@ -20,7 +20,7 @@ resource "aws_launch_configuration" "ecs" {
   key_name             = "${var.key_name}"
   iam_instance_profile = "${aws_iam_instance_profile.ecs.id}"
   security_groups      = ["${aws_security_group.ecs.id}"]
-  iam_instance_profile = "${aws_iam_instance_profile.ecs.name}"
+  /* iam_instance_profile = "${aws_iam_instance_profile.ecs.name}" */
   /* FIXME */
   associate_public_ip_address = true
   user_data            = "#!/bin/bash\necho ECS_CLUSTER=${aws_ecs_cluster.ecs.name} > /etc/ecs/ecs.config"
@@ -38,10 +38,11 @@ resource "aws_autoscaling_group" "ecs" {
   /* availability_zones   = ["${split(",", var.availability_zones)}"] */
   launch_configuration = "${aws_launch_configuration.ecs.name}"
   /* @todo - variables */
-  min_size             = 2
-  max_size             = 2
+  min_size             = 1
+  max_size             = 3
   desired_capacity     = 2
-  vpc_zone_identifier  = ["${var.subnet_ids}"]
+  /* vpc_zone_identifier  = ["${var.subnet_ids}"] */
+  vpc_zone_identifier  = ["${split(",", var.subnet_ids)}"]
   load_balancers       = ["${aws_elb.ecs-elb.id}"]
   health_check_type    = "EC2"
 

@@ -5,14 +5,14 @@ resource "aws_iam_role" "ecs_role" {
   assume_role_policy = "${file("policies/ecs-role.json")}"
 }
 
-/* ecs service scheduler role */
+/* ecs service role */
 resource "aws_iam_role_policy" "ecs_service_role_policy" {
   name     = "ecs_service_role_policy"
   policy   = "${file("policies/ecs-service-role-policy.json")}"
   role     = "${aws_iam_role.ecs_role.id}"
 }
 
-/* ec2 container instance role & policy */
+/* ec2 container instance role */
 resource "aws_iam_role_policy" "ecs_instance_role_policy" {
   name     = "ecs_instance_role_policy"
   policy   = "${file("policies/ecs-instance-role-policy.json")}"
