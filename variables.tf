@@ -13,8 +13,7 @@ variable "region" {
 
 variable "availability_zones" {
   description = "The availability zones"
-  /* default = "ap-southeast-2a,ap-southeast-2b,ap-southeast-2c" */
-  default = "ap-southeast-2a,ap-southeast-2b"
+  default = "ap-southeast-2a,ap-southeast-2b,ap-southeast-2c"
 }
 
 variable "ecs_cluster_name" {
@@ -38,11 +37,11 @@ variable "instance_type" {
 }
 
 variable "vpc_id" {
-  /* FIXME */
-  default = "vpc-a10660c4"
+  description = "The id of the vpc to deploy this ecs cluster."
 }
 
 variable "subnet_ids" {
+  description = "The subnet ids (comma delimited) to deploy this ecs cluster."
 }
 
 variable "key_name" {
@@ -50,6 +49,22 @@ variable "key_name" {
   default = "ecs"
 }
 
-/* variable "key_file" { */
-/*   description = "The ssh public key" */
-/* } */
+variable "ec2_public_ips" {
+  description = "Associate public ips with the instances. This will depend on the subnet placed in."
+  default = true
+}
+
+variable "scaling_max_size" {
+  description = "The maximum size for the autoscaling group."
+  default = "3"
+}
+
+variable "scaling_min_size" {
+  description = "The minimum size for the autoscaling group."
+  default = "1"
+}
+
+variable "scaling_desired_capacity" {
+  description = "The autoscaling desired capacity."
+  default = "2"
+}

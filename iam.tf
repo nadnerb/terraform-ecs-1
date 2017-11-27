@@ -1,4 +1,3 @@
-
 /* ecs iam role and policies */
 resource "aws_iam_role" "ecs_role" {
   name               = "ecs_role"

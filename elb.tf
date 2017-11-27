@@ -1,7 +1,5 @@
 resource "aws_elb" "ecs-elb" {
   name = "ecs-elb"
-  /* we don't have default subnets */
-  /* availability_zones = ["${split(",", var.availability_zones)}"] */
   subnets = ["${split(",", var.subnet_ids)}"]
 
   listener {
