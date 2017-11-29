@@ -1,5 +1,5 @@
 resource "aws_elb" "ecs-elb" {
-  name = "ecs-elb"
+  name = "${terraform.workspace}-${var.ecs_cluster_name}-elb"
   subnets = ["${split(",", var.subnet_ids)}"]
 
   listener {
@@ -29,7 +29,7 @@ resource "aws_elb" "ecs-elb" {
   connection_draining = false
 
   tags {
-    Name = "ecs-elb"
+    Name = "${terraform.workspace}-${var.ecs_cluster_name}-elb"
   }
 }
 

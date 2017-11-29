@@ -1,7 +1,3 @@
-output "zone_id" {
-  value = "${aws_route53_zone.internal.zone_id}"
-}
-
 output "cluster_id" {
   value = "${aws_ecs_cluster.ecs.id}"
 }

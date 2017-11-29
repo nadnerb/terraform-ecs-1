@@ -8,7 +8,7 @@ provider "aws" {
  * Launch configuration used by autoscaling group
  */
 resource "aws_launch_configuration" "ecs" {
-  name_prefix          = "ecs-"
+  name_prefix          = "${terraform.workspace}-${var.ecs_cluster_name}-lc-"
   image_id             = "${lookup(var.amis, var.region)}"
   instance_type        = "${var.instance_type}"
   key_name             = "${var.key_name}"
@@ -26,7 +26,7 @@ resource "aws_launch_configuration" "ecs" {
  * Autoscaling group.
  */
 resource "aws_autoscaling_group" "ecs" {
-  name                 = "ecs-asg"
+  name                 = "${terraform.workspace}-${var.ecs_cluster_name}-asg"
   launch_configuration = "${aws_launch_configuration.ecs.name}"
   min_size             = "${var.scaling_min_size}"
   max_size             = "${var.scaling_max_size}"
@@ -41,12 +41,12 @@ resource "aws_autoscaling_group" "ecs" {
 
   tag {
     key                 = "Name"
-    value               = "ecs-instance"
+    value               = "${terraform.workspace}-${var.ecs_cluster_name}-instance"
     propagate_at_launch = true
   }
 }
 
 resource "aws_ecs_cluster" "ecs" {
-  name = "${var.ecs_cluster_name}"
+  name = "${terraform.workspace}-${var.ecs_cluster_name}"
 }
 
