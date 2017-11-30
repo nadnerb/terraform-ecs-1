@@ -2,7 +2,7 @@
  * Provides internal access to container ports
  */
 resource "aws_security_group" "ecs" {
-  name = "${terraform.workspace}-${var.ecs_cluster_name}-sg"
+  name = "${terraform.workspace}-${var.ecs_cluster_name}-ecs-sg"
   description = "Container Instance Allowed Ports"
   vpc_id      = "${var.vpc_id}"
 

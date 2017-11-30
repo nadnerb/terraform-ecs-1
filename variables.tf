@@ -1,9 +1,5 @@
-variable "aws_access_key" {
-  description = "The AWS access key."
-}
-
-variable "aws_secret_key" {
-  description = "The AWS secret key."
+variable "aws_profile" {
+  description = "The AWS profile to use (e.g can be found in /home/user/.aws/credentials)."
 }
 
 variable "region" {

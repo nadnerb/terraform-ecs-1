@@ -9,3 +9,6 @@ terraform apply -var aws_access_key='somekey' -var aws_secret_key='somesecret' -
 ```
 
 _TODO - needs more juice_
+
+* s3 setup etc
+* blog it?
