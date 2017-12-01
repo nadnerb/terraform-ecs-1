@@ -36,6 +36,10 @@ variable "vpc_id" {
   description = "The id of the vpc to deploy this ecs cluster."
 }
 
+variable "cidr_blocks" {
+  description = "The cidr block for security groups."
+}
+
 variable "subnet_ids" {
   description = "The subnet ids (comma delimited) to deploy this ecs cluster."
 }

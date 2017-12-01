@@ -7,10 +7,10 @@ resource "aws_security_group" "ecs" {
   vpc_id      = "${var.vpc_id}"
 
   ingress {
-    from_port = 1
-    to_port   = 65535
+    from_port = 3310
+    to_port   = 3310
     protocol  = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${var.cidr_blocks}"]
   }
 
   egress {
