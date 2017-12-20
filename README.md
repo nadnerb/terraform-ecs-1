@@ -10,7 +10,7 @@ The way that we organise Terraform projects is to start from a base project and 
 
 ### Architecture
 
-![alt text](terraform.png "Title")
+![alt text](terraform.png "Architecture - Part 2")
 
 # Setting up
 
@@ -64,4 +64,8 @@ You should see something like the following:
 ```sh
 Apply complete! Resources: x added, 0 changed, 0 destroyed.
 ```
+
+# Continuing on
+
+To deploy a service to your new cluster, see this [project](https://github.com/CERATechnologies/terraform-ecs-clamav).
 
