@@ -23,6 +23,7 @@ variable "zone_name" {
 
 /* ECS optimized AMIs per region */
 variable "amis" {
+  type    = "map"
   default = {
     ap-southeast-2 = "ami-e3b75981"
   }
@@ -37,7 +38,7 @@ variable "vpc_id" {
 }
 
 variable "cidr_blocks" {
-  description = "The cidr block for security groups."
+  description = "The cidr blocks for security groups."
 }
 
 variable "subnet_ids" {
